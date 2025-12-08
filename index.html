@@ -10,7 +10,7 @@
 
     <header>
         <h1>VIP CSS: Visualizador Interativo</h1>
-        <p>Ajuste os controles abaixo para manipular **Box-Shadow**, **Border-Radius**, **Transform**, **Filter**, **Transition**, **Opacity** e **Text-Shadow** em tempo real.</p>
+        <p>Ajuste os controles abaixo para manipular **Box-Shadow**, **Border-Radius**, **Transform**, **Filter**, **Transition**, **Opacity**, **Text-Shadow**, **Gradientes** e **Variáveis CSS** em tempo real.</p>
     </header>
 
     <div class="fixed-panel">
@@ -28,42 +28,35 @@
         
         <div id="controls">
             
-            <h2>Sombra (Box-Shadow)</h2>
+            <h2>Variáveis CSS Customizadas</h2>
             <div class="control-group">
-                <label for="offsetX">Deslocamento X (px):</label>
-                <input type="range" id="offsetX" min="-50" max="50" value="10">
-                <span id="offsetX-value">10</span>
+                <label for="varPrimaryColor">--cor-primaria:</label>
+                <input type="color" id="varPrimaryColor" value="#cc3399">
+                <span id="varPrimaryColor-value">#cc3399</span>
             </div>
             
             <div class="control-group">
-                <label for="offsetY">Deslocamento Y (px):</label>
-                <input type="range" id="offsetY" min="-50" max="50" value="10">
-                <span id="offsetY-value">10</span>
+                <label for="varShadowColor">--cor-sombra:</label>
+                <input type="color" id="varShadowColor" value="#333333">
+                <span id="varShadowColor-value">#333333</span>
+            </div>
+
+            <div class="control-group">
+                <label for="varScaleFactor">--fator-escala:</label>
+                <input type="range" id="varScaleFactor" min="0.5" max="2.0" value="1.0" step="0.05">
+                <span id="varScaleFactor-value">1.0</span>
+            </div>
+
+            <hr>
+
+            <h2>Múltiplas Sombras (Box-Shadow)</h2>
+            <div id="shadow-controls-container" style="grid-column: 1 / -1;">
+                </div>
+            <div style="grid-column: 1 / -1; display: flex; gap: 10px; margin-top: 10px;">
+                <button id="addShadowButton" type="button">➕ Adicionar Sombra</button>
+                <button id="removeShadowButton" type="button" disabled>➖ Remover Sombra</button>
             </div>
             
-            <div class="control-group">
-                <label for="blurRadius">Desfoque (px):</label>
-                <input type="range" id="blurRadius" min="0" max="50" value="10">
-                <span id="blurRadius-value">10</span>
-            </div>
-
-            <div class="control-group">
-                <label for="spreadRadius">Espalhamento (px):</label>
-                <input type="range" id="spreadRadius" min="-20" max="20" value="0">
-                <span id="spreadRadius-value">0</span>
-            </div>
-
-            <div class="control-group color-control">
-                <label for="shadowColor">Cor da Sombra:</label>
-                <input type="color" id="shadowColor" value="#505050">
-                <span id="shadowColor-value">#505050</span>
-            </div>
-
-            <div class="control-group">
-                <label for="insetToggle">Sombra Interna (Inset):</label>
-                <input type="checkbox" id="insetToggle">
-            </div>
-
             <hr>
 
             <h2>Cantos (Border-Radius)</h2>
@@ -100,8 +93,8 @@
                 <span id="rotateAngle-value">0</span>
             </div>
 
-            <div class="control-group">
-                <label for="scaleFactor">Escala (Fator):</label>
+            <div class="control-group" style="visibility: hidden;">
+                <label for="scaleFactor">Escala (Fator - OBSOLETO):</label>
                 <input type="range" id="scaleFactor" min="0.5" max="2.0" value="1.0" step="0.05">
                 <span id="scaleFactor-value">1.0</span>
             </div>
@@ -119,6 +112,37 @@
                 <label for="filterBrightness">Brilho (Brightness - %):</label>
                 <input type="range" id="filterBrightness" min="0" max="200" value="100" step="10">
                 <span id="filterBrightness-value">100</span>
+            </div>
+            
+            <hr>
+            
+            <h2>Fundo (Gradientes)</h2>
+            
+            <div class="control-group">
+                <label for="gradientType">Tipo de Gradiente:</label>
+                <select id="gradientType">
+                    <option value="linear">Linear</option>
+                    <option value="radial">Radial</option>
+                </select>
+                <span id="gradientType-value">Linear</span>
+            </div>
+
+            <div class="control-group">
+                <label for="gradientAngle">Ângulo (Linear - deg):</label>
+                <input type="range" id="gradientAngle" min="0" max="360" value="90">
+                <span id="gradientAngle-value">90</span>
+            </div>
+            
+            <div class="control-group">
+                <label for="stop1">Posição (Stop 1 - %):</label>
+                <input type="range" id="stop1" min="0" max="100" value="0">
+                <span id="stop1-value">0</span>
+            </div>
+
+            <div class="control-group">
+                <label for="stop2">Posição (Stop 2 - %):</label>
+                <input type="range" id="stop2" min="0" max="100" value="100">
+                <span id="stop2-value">100</span>
             </div>
             
             <hr>
