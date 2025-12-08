@@ -139,4 +139,60 @@ h1 {
 
 #copy-button:hover {
     background-color: #0056b3;
+
 }
+
+/* --- RESPONSIVIDADE (MEDIA QUERIES) --- */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    /* 1. Mudar o Painel Fixo para ser empilhado (Static) */
+    .fixed-panel {
+        position: static; /* Desativa a fixação */
+        width: 100%;
+        margin-bottom: 20px;
+        order: -1; /* Coloca o painel de visualização no topo */
+    }
+
+    /* 2. Ajustar a Caixa de Teste para ocupar a largura total do painel */
+    #target-box {
+        width: 100%;
+        height: 150px; /* Reduz a altura para economizar espaço vertical */
+        font-size: 1.5em; 
+    }
+    
+    #target-box span {
+        font-size: 1.8em;
+    }
+
+    /* 3. Ajustar o Contêiner de Controles */
+    #controls {
+        /* Muda para 2 colunas para melhor usabilidade em celular */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+        width: 100%;
+        margin-right: 0; /* Remove a margem direita que compensava o painel fixo */
+        padding: 15px;
+    }
+
+    /* 4. Garantir que os Títulos e Separadores ocupem toda a linha */
+    #controls h2, 
+    #controls hr {
+        grid-column: 1 / -1;
+    }
+    
+    /* Garantir que as linhas de cor e select sejam empilhadas (se necessário) */
+    .control-group.color-control {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* O painel de código gerado deve ocupar a largura total no modo estático */
+    #css-result-container {
+        width: 100%;
+    }
+    }
+    
